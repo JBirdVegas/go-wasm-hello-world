@@ -11,7 +11,7 @@
     const go = new Go();
     let mod, inst;
     WebAssembly.instantiateStreaming(
-        fetch("go-wasm-hello-world.wasm", {cache: 'no-cache'}), go.importObject).then((result) => {
+        fetch("compiled/go-wasm-hello-world.wasm", {cache: 'no-cache'}), go.importObject).then((result) => {
         mod = result.module;
         inst = result.instance;
         run();

@@ -45,11 +45,9 @@ func setupScreen(c chan bool) {
 		exitButton.Get("style").Set("transition", transition)
 		exitButton.Get("style").Set("opacity", "0")
 		go func() {
-			fmt.Printf("Sleeping for %d second(s)...\n", fadeTimeInSeconds)
 			time.Sleep(time.Duration(fadeTimeInSeconds) * time.Second)
 			mainButton.Call("removeChild", exitButton)
 			mainButton.Call("removeChild", addTextButton)
-			println("Honey I removed the children, :P")
 			c <- true
 		}()
 		return nil
@@ -57,7 +55,7 @@ func setupScreen(c chan bool) {
 	exitButton.Call("addEventListener", "click", exitCallBack)
 }
 
-func addText(this js.Value, args []js.Value) interface{} {
+func addText(_ js.Value, _ []js.Value) interface{} {
 	textCounter += 1
 	textNode := Document.CreateTextNode(fmt.Sprintf("Hello world x %d", textCounter))
 	br := Document.CreateElement("br")
@@ -65,7 +63,6 @@ func addText(this js.Value, args []js.Value) interface{} {
 	mainText.Call("appendChild", textNode)
 	mainText.Call("appendChild", br)
 
-	println(fmt.Sprintf("this: %v, args: %v", this, args))
 	return nil
 }
 

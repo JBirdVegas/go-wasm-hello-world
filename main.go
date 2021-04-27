@@ -10,17 +10,17 @@ import (
 )
 
 var (
-	mainButton        = Document.GetElementById("main-button")
-	mainText          = Document.GetElementById("main-text")
-	addTextButton     = Document.CreateElement("button")
-	exitButton        = Document.CreateElement("button")
-	textCounter       = 0
-	fadeTimeInSeconds = 1
+	mainButton    = Document.GetElementById("main-button")
+	mainText      = Document.GetElementById("main-text")
+	addTextButton = Document.CreateElement("button")
+	exitButton    = Document.CreateElement("button")
+	textCounter   = 0
 )
 
 const (
-	addMoreText = "Should I say hello world?"
-	exitText    = "quit this nonsense"
+	addMoreText       = "Should I say hello world?"
+	exitText          = "quit this nonsense"
+	fadeTimeInSeconds = 1
 )
 
 func setupScreen(c chan bool) {

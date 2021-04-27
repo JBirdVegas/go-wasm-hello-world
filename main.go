@@ -23,7 +23,13 @@ const (
 	fadeTimeInSeconds = 1
 )
 
+func setHeaderStuff() {
+	favLink := Document.QuerySelector("link[rel~='icon']")
+	favLink.Set("href", "favicon.ico")
+}
+
 func setupScreen(c chan bool) {
+	Document.Set("title", "testing :)")
 	addTextButton.Set("textContent", addMoreText)
 	addTextButton.Get("style").Set("marginRight", "50px")
 	mainButton.Get("style").Set("marginTop", "10px")
@@ -66,8 +72,13 @@ func addText(_ js.Value, _ []js.Value) interface{} {
 	return nil
 }
 
+func orchestrator(c chan bool) {
+	setHeaderStuff()
+	setupScreen(c)
+}
+
 func main() {
 	c := make(chan bool)
-	go setupScreen(c)
+	go orchestrator(c)
 	<-c
 }

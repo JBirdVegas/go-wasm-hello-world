@@ -29,7 +29,7 @@ func setHeaderStuff() {
 }
 
 func setupScreen(c chan bool) {
-	Document.Set("title", "testing :)")
+	Document.Set("title", "Go WASM demo fun!")
 	addTextButton.Set("textContent", addMoreText)
 	addTextButton.Get("style").Set("marginRight", "50px")
 	mainButton.Get("style").Set("marginTop", "10px")
